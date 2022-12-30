@@ -1,0 +1,43 @@
+<div nz-row>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+  <div nz-col [nzLg]="22" [nzXs]="22">
+    <nz-table
+      nzShowSizeChanger
+      [nzData]="essayProblemFinishedDTOList"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageNum"
+      [nzTotal]="totalElement"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+      <tr>
+        <th>题目</th>
+        <th>得分</th>
+        <th>满分</th>
+        <th>我的答案</th>
+        <th>参考答案</th>
+        <th>日期</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let problem of essayProblemFinishedDTOList">
+        <td>{{problem.title}}</td>
+        <td>{{problem.gottenPoint}}</td>
+        <td>{{problem.maxPoint}}</td>
+        <td>
+          <app-view-essay-problem-answer [(ngModel)]="problem.answer"></app-view-essay-problem-answer>
+        </td>
+        <td>
+          <app-view-essay-problem-answer [(ngModel)]="problem.referenceAnswer"></app-view-essay-problem-answer>
+        </td>
+        <td>{{problem.date}}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+</div>
+

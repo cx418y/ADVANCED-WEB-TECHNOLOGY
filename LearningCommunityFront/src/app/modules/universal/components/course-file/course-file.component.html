@@ -1,0 +1,12 @@
+<div nz-row>
+  <div nz-col nzSpan="1"></div>
+  <div nz-col nzSpan="22">
+    <app-upload-course-file
+      style="float: right"
+      *ngIf="allowFileUpload"
+      [courseCode]="courseCode"
+    ></app-upload-course-file>
+    <app-view-course-file [courseCode]="courseCode"></app-view-course-file>
+  </div>
+  <div nz-col nzSpan="1"></div>
+</div>

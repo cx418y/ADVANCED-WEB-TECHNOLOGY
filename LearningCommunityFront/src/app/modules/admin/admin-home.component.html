@@ -1,0 +1,61 @@
+<nz-layout style="min-height: 100%">
+  <nz-header class="header" nz-row>
+    <div class="logo" nz-col nzSpan="4"></div>
+    <div class="mid" nz-col nzSpan="16"></div>
+    <div class="logout" nz-col nzSpan="4" style="text-align: right">
+      <a nz-dropdown [nzDropdownMenu]="menu">
+        管理员：AdminName
+        <i nz-icon nzType="down"></i>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>1st menu item</li>
+          <li nz-menu-item>2nd menu item</li>
+          <li nz-menu-item>3rd menu item</li>
+          <li nz-menu-item nzDanger (click)="logout()">注销</li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="200px" nzTheme="light">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-submenu nzOpen nzIcon="user" nzTitle="用户 ">
+          <ul>
+            <li nz-menu-item nzSelected>所有用户</li>
+            <li nz-menu-item>
+              <a routerLink="addTeacherTaStudent"> 添加教师/助教/学生
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="课程" nzIcon="laptop">
+          <ul>
+            <li nz-menu-item>所有课程</li>
+            <li nz-menu-item>添加课程</li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="设置" nzIcon="setting">
+          <ul>
+            <li nz-menu-item>option9</li>
+            <li nz-menu-item>option10</li>
+            <li nz-menu-item>option11</li>
+            <li nz-menu-item>option12</li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <nz-breadcrumb>
+        <!-- <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>List</nz-breadcrumb-item>
+        <nz-breadcrumb-item>App</nz-breadcrumb-item> -->
+      </nz-breadcrumb>
+      <nz-content>
+        <!-- Content -->
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

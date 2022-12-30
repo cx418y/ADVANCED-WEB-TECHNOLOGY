@@ -1,0 +1,54 @@
+<div nz-row>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+  <div nz-col [nzLg]="20" [nzXs]="20">
+
+    <nz-table
+      nzShowSizeChanger
+      [nzData]="essayProblemToBeTeacherTAGradedList"
+      [nzLoading]="loading"
+      [nzFrontPagination]="false"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageNum"
+      [nzTotal]="totalElement"
+      (nzQueryParams)="onQueryParamsChange($event)">
+      <thead>
+      <tr>
+        <th>题目</th>
+        <th>答题人</th>
+        <th>满分</th>
+        <th>参考答案</th>
+        <th>他/她的答案</th>
+        <th>日期</th>
+        <th>我的评分</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let problem of essayProblemToBeTeacherTAGradedList;let i=index">
+        <td>{{problem.title}}</td>
+        <td>{{problem.answererUsername}}</td>
+        <td>{{problem.maxPoint}}</td>
+        <td>
+          <app-view-essay-problem-answer [(ngModel)]="problem.referenceAnswer"></app-view-essay-problem-answer>
+        </td>
+        <td>
+          <app-view-essay-problem-answer [(ngModel)]="problem.answer"></app-view-essay-problem-answer>
+        </td>
+        <td>{{problem.date}}</td>
+        <td>
+          <nz-input-number [(ngModel)]="gradeList[i]" [nzMin]="0"
+                           [nzMax]="essayProblemToBeTeacherTAGradedList[i].maxPoint"
+                           [nzStep]="1"></nz-input-number>
+        </td>
+        <td>
+          <button nz-button nzType="primary" style="float:right" (click)="submit(i)">提交</button>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+
+  </div>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+</div>
+

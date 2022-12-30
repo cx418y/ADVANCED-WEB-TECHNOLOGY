@@ -1,0 +1,26 @@
+<div nz-row>
+  <div nz-col nzSpan="2"></div>
+  <div nz-col nzSpan="24">
+    <nz-collapse>
+      <nz-collapse-panel
+        *ngFor="let panel of sections"
+        [nzHeader]="panel.sectionName"
+        [nzActive]="false"
+        [nzDisabled]="false"
+        [nzShowArrow]="false"
+        [nzExtra]="extraTpl"
+      >
+
+        <ng-template #extraTpl>
+          <i *ngIf="!isStudent">
+            <app-add-homework [courseCode]="courseCode" [sectionID]="panel.sectionID"></app-add-homework>
+          </i>
+        </ng-template>
+
+        <app-homework-list [sectionID]=panel.sectionID></app-homework-list>
+
+      </nz-collapse-panel>
+    </nz-collapse>
+
+  </div>
+</div>

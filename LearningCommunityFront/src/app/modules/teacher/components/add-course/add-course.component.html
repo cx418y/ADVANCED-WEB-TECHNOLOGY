@@ -1,0 +1,45 @@
+<div nz-row>
+  <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div>
+  <form nz-col [nzLg]="{span:10}" [nzXs]="{span:22}" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()"
+        style="padding-top: 20px;text-align: center">
+    <h1 style="text-align: center;font-family: serif">开设新课</h1>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired style="text-align: left" nzFor="courseCode">课程代码</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="课程代码应该是前4位由大写字母组成，后6位由数字组成，例如SOFT130058">
+        <input nz-input formControlName="courseCode" id="courseCode"
+               placeholder="这是课程的唯一代码，前4位由大写字母组成，后6位由数字组成，例如 SOFT130058"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired style="text-align: left" nzFor="courseName">课程名</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="课程名不能为空">
+        <input nz-input formControlName="courseName" id="courseName"
+               placeholder="课程名，例如 系统程序设计"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired style="text-align: left" nzFor="courseCode">课程描述</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="课程代码不能为空">
+        <input nz-input formControlName="description" id="description"
+               placeholder="课程描述"/>
+      </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item nz-row class="register-area" style="padding-top: 10px">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">添加课程</button>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+
+  <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div>
+</div>
+
+
+

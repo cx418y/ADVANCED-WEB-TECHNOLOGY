@@ -1,0 +1,41 @@
+<div nz-row id="container">
+  <nz-page-header
+    nz-col nzSpan="24"
+    style="background: white"
+    class="site-page-header"
+    nzTitle="Homework Editor"
+    [nzSubtitle]="detailedHomework?.courseCode"
+  >
+    <nz-page-header-extra>
+      <button nz-button (click)="openHistoryVersionDrawer()">History Versions</button>
+      <button nz-button nzType="primary" (click)="save()">Save</button>
+    </nz-page-header-extra>
+  </nz-page-header>
+
+  <div nz-col nzSpan="7"></div>
+
+  <div nz-col nzSpan="10" nz-typography>
+    <div id="homework">
+      <h2 nz-typography>{{detailedHomework?.title}}</h2>
+      <nz-tag [nzColor]="'magenta'" *ngIf="notSaved">Not Saved</nz-tag>
+      <span nz-typography nzType="secondary">用户 {{fromUsername}} 最后编辑于 {{createdTime}} </span>
+      <div nz-typography [innerHTML]="detailedHomework?.details"></div>
+      <editor id="editor"
+              [(ngModel)]="homeworkContent"
+              [init]="{ plugins: 'lists link image table code help wordcount',height:'600' }"
+              [apiKey]="commonService.tinyMceKey()"
+              (onChange)="onHomeworkContentLocalChange()"
+      ></editor>
+    </div>
+  </div>
+
+  <div nz-col nzSpan="7"></div>
+</div>
+
+<!--展示历史版本的drawer-->
+<app-history-version-drawer
+  (homeworkContentChanged)="onHomeworkContentChanged($event)"
+  [historyBriefVersions]="historyBriefVersions"
+  [detailedHomework]="detailedHomework"
+>
+</app-history-version-drawer>

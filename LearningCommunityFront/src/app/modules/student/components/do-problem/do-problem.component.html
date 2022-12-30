@@ -1,0 +1,66 @@
+<div nz-row>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+  <div nz-col [nzLg]="22" [nzXs]="22">
+
+    <nz-table
+      nzShowSizeChanger
+      [nzData]="essayProblemToBeDoneList"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageNum"
+      [nzTotal]="totalElement"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+      <tr>
+        <th>题目</th>
+        <th>分值</th>
+        <th>互评</th>
+        <th>我的答案</th>
+        <th>日期</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let problem of essayProblemToBeDoneList;let i=index;">
+        <td>{{problem.title}}</td>
+        <td>{{problem.point}}</td>
+        <td>
+          <nz-switch [(ngModel)]="problem.peerGrading" [nzDisabled]="true"></nz-switch>
+        </td>
+        <td>
+          <app-edit-essay-problem-answer [(ngModel)]="answerList[i]"></app-edit-essay-problem-answer>
+        </td>
+        <td>{{problem.date}}</td>
+        <td>
+          <button nz-button nzType="primary" style="float: right;margin-top: 10px" (click)="submit(i)">提交</button>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+
+    <!--    <nz-card *ngFor="let problem of essayProblemToBeDoneList,let i=index" style="margin-bottom: 10px">-->
+    <!--      <h3 nz-typography>{{problem.title}}</h3>-->
+    <!--      <div nz-typography><strong>待答编号：</strong>{{problem.essayProblemToBeDoneID}}</div>-->
+    <!--      <div nz-typography><strong>分值：</strong>{{problem.point}}</div>-->
+    <!--      <div nz-typography><strong>课程代码：</strong>{{problem.courseCode}}</div>-->
+    <!--      <div nz-typography>-->
+    <!--        <strong>互评：</strong>-->
+    <!--        <nz-switch [(ngModel)]="problem.peerGrading" [nzDisabled]="true"></nz-switch>-->
+    <!--      </div>-->
+    <!--      <textarea [(ngModel)]="answerList[i]" nz-input placeholder="在这里写你的答案"-->
+    <!--                [nzAutosize]="{ minRows: 3, maxRows: 10}"></textarea>-->
+    <!--      <button nz-button nzType="primary" style="float: right;margin-top: 10px" (click)="submit(i)">提交</button>-->
+    <!--    </nz-card>-->
+
+    <!--    <div style="text-align: center">-->
+    <!--      <button nz-button nzType="primary" nzShape="circle" (click)="getEssayProblemsToBeDone()"><i nz-icon-->
+    <!--                                                                                                  nzType="down"></i>-->
+    <!--      </button>-->
+    <!--    </div>-->
+  </div>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+</div>
+

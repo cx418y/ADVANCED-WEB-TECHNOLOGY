@@ -1,0 +1,16 @@
+<div nz-row>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="16">
+<nz-collapse>
+    <nz-collapse-panel
+      *ngFor="let panel of chapters"
+      [nzHeader]="panel.chapterName"
+      [nzActive]="false"
+      [nzDisabled]="false"
+    >
+      <app-section [chapterID] =  panel.chapterID [courseCode] = courseCode [isStudent]=isStudent></app-section>
+    </nz-collapse-panel>
+  </nz-collapse>
+  </div>
+  </div>
+`

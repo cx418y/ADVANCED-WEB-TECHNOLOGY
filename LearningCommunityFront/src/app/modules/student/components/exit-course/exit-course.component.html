@@ -1,0 +1,24 @@
+<nz-tabset nzCentered style="">
+    <nz-tab nzTitle="我的课程">
+        <div nz-row>
+            <div nz-col nzSpan="4"></div>
+            <div nz-col nzSpan="16">
+              <nz-list nzBordered style="background-color: white">
+          
+                <nz-list-item *ngFor="let course of myRelatedCourses">
+          
+                  {{course.courseName}} ({{course.courseCode}})
+          
+                  <span style="text-align: right">
+                    
+                    <button nz-button nzType="text" nzDanger  (click)="exitCourse(course.courseCode)">退出课程</button>
+                  </span>
+          
+                </nz-list-item>
+          
+              </nz-list>
+            </div>
+            <div nz-col nzSpan="4"></div>
+          </div>
+    </nz-tab>
+  </nz-tabset>

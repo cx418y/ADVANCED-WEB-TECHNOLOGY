@@ -1,0 +1,71 @@
+<div nz-row>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+  <div nz-col [nzXs]="20" [nzLg]="12">
+    <nz-card [nzBordered]="false" nzTitle="待分发试题">
+      <nz-collapse>
+        <nz-collapse-panel
+          *ngFor="let problemToHandOut of essayProblemToHandOutList;let i=index"
+          [nzHeader]="essayProblemToHandOutTitleList[i]"
+          [nzActive]="true">
+
+          <div style="margin: 0">
+            <div nz-typography>
+              <strong>问题编号：</strong>
+              <span style="float: right">{{problemToHandOut.essayProblemID}}</span>
+            </div>
+
+            <div nz-typography>
+              <strong>学生互评：</strong>
+              <nz-switch style="float: right" [(ngModel)]="problemToHandOut.peerGrading"></nz-switch>
+            </div>
+
+            <div nz-typography>
+              <strong>试题满分：</strong>
+              <nz-input-number style="float: right" [(ngModel)]="problemToHandOut.point" [nzMin]="1" [nzMax]="10"
+                               [nzStep]="1"></nz-input-number>
+            </div>
+
+            <div style="text-align: right">
+              <button nz-button nzType="default" nzDanger (click)="dropEssayProblemToHandOut(i)">不发这题了</button>
+            </div>
+
+          </div>
+
+        </nz-collapse-panel>
+      </nz-collapse>
+    </nz-card>
+
+    <div style="height: 20px"></div>
+
+    <nz-card [nzBordered]="false" nzTitle="试题库">
+
+      <nz-collapse>
+        <nz-collapse-panel
+          *ngFor="let problem of essayProblemList;let i=index"
+          [nzHeader]="problem.title">
+          <div style="margin:0;">
+            <div nz-typography>
+              <nz-tag [nzColor]="'magenta'">论述题</nz-tag>
+            </div>
+            <div nz-typography><strong>问题编号：</strong>{{problem.essayProblemID}}</div>
+            <div nz-typography><strong>来自用户：</strong>{{problem.fromUsername}}</div>
+            <div nz-typography>
+              <strong>参考答案：</strong>
+              <app-view-essay-problem-answer [(ngModel)]="problem.referenceAnswer"></app-view-essay-problem-answer>
+            </div>
+            <div style="text-align: right">
+              <button nz-button nzType="primary" (click)="pickEssayProblem(i)">添加到待分发试题</button>
+            </div>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+</div>
+
+<button (click)="handoutEssayProblems()" *ngIf="essayProblemToHandOutList.length>0" class="bottom-right-button" nz-button nzType="primary"
+        [nzSize]="'large'" nzShape="circle">
+  <i nz-icon nzType="check"></i>
+</button>

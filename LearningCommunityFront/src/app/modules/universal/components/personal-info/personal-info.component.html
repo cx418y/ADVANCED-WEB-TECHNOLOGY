@@ -1,0 +1,37 @@
+<div class="body" nz-typography>
+  <h2 nz-typography>我的头像</h2>
+
+  <!--  显示用户头像-->
+  <div nz-typography>
+    <div nz-typography>
+      <nz-avatar [nzShape]="'square'" [nzSize]="200" [nzIcon]="'user'" [nzSrc]="avatarSrc"></nz-avatar>
+    </div>
+    <div nz-typography>
+      <nz-upload [nzBeforeUpload]="chooseAvatar">
+        <button nz-button>
+          <i nz-icon nzType="upload"></i>
+          Select File
+        </button>
+      </nz-upload>
+      <button nz-button nzType="primary" (click)="updateAvatar()">上传头像</button>
+    </div>
+  </div>
+
+  <!--  显示个人信息-->
+  <h2 nz-typography>个人信息</h2>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" style="width: 30%">
+
+    <div nz-typography><strong>用户名: </strong>{{userInfo.username}}</div>
+    <div nz-typography><strong>角色: </strong>{{userInfo.role}}</div>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired nzFor="email" style="text-align: left">电子邮箱</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="输入的电子邮箱无效!">
+        <input nz-input formControlName="email" id="email" placeholder="电子邮箱" [(ngModel)]="userInfo.email"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button  [nzType]="'primary'">更新</button>
+  </form>
+
+</div>

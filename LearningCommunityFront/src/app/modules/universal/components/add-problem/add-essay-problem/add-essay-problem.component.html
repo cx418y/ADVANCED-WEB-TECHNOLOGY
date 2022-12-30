@@ -1,0 +1,32 @@
+<nz-table #basicTable [nzData]="data" [nzShowPagination]="false">
+  <thead>
+  <tr>
+    <th>题目</th>
+    <th>参考解答（支持富文本）</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let newProblem of data;let i=index">
+    <td>
+      <input [(ngModel)]="newProblem.title" nz-input placeholder="请输入题目"/>
+    </td>
+    <td>
+      <app-edit-essay-problem-answer [(ngModel)]="newProblem.referenceAnswer"></app-edit-essay-problem-answer>
+    </td>
+    <td>
+      <nz-tag [nzColor]="'blue'" *ngIf="newProblem.status===0">Pending</nz-tag>
+      <nz-tag [nzColor]="'green'" *ngIf="newProblem.status===1">{{newProblem.message}}</nz-tag>
+      <nz-tag [nzColor]="'red'" *ngIf="newProblem.status===2">{{newProblem.message}}</nz-tag>
+      <span><a (click)="delete(i)">Delete</a></span>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+
+<div style="float: right">
+  <button nz-button nzType="default" (click)="add()">添加</button>
+  <button nz-button nzType="primary" (click)="submit()">提交</button>
+</div>
+
+

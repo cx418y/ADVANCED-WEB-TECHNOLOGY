@@ -1,0 +1,61 @@
+<nz-layout style="min-height: 100%;">
+  <nz-header class="header" nz-row>
+    <div class="logo" nz-col nzSpan="4"></div>
+    <div class="mid" nz-col nzSpan="16"></div>
+    <div class="logout" nz-col nzSpan="4" style="text-align: right">
+      <nz-avatar [nzShape]="'square'" [nzSize]="'large'" [nzIcon]="'user'" [nzSrc]="myAvatarSrc"></nz-avatar>
+      <a nz-dropdown [nzDropdownMenu]="menu">
+        学生：{{username}}
+        <i nz-icon nzType="down"></i>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>1st menu item</li>
+          <li nz-menu-item>2nd menu item</li>
+          <li nz-menu-item>3rd menu item</li>
+          <li nz-menu-item nzDanger (click)="logout()">注销</li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="200px" nzTheme="light" nzCollapsible="true">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+
+        <li nz-submenu nzTitle="我学的课程" nzIcon="laptop">
+          <ul>
+            <li
+              *ngFor="let course of myRelatedCourses"
+              (click)="commonService.safeNavigateByUrl(router,'/student/studentCourseNav',{courseCode:course.courseCode})"
+              nz-menu-item>{{course.courseName}}</li>
+          </ul>
+        </li>
+
+        <li nz-submenu nzTitle="操作" nzIcon="setting">
+          <ul>
+            <li nz-menu-item [routerLink]="'joinCourse'">加入课程</li>
+            <li nz-menu-item [routerLink]="'exitCourse'">退出课程</li>
+          </ul>
+        </li>
+
+        <li nz-submenu nzTitle="设置" nzIcon="setting">
+          <ul>
+            <li nz-menu-item routerLink="personalInfo">个人信息</li>
+          </ul>
+        </li>
+
+      </ul>
+    </nz-sider>
+
+    <nz-layout class="inner-layout" style=" background: #f5f5f5">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+
+  </nz-layout>
+</nz-layout>
+
+
+

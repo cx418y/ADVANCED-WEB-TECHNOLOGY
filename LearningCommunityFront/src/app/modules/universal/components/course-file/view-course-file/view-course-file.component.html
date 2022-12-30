@@ -1,0 +1,37 @@
+<nz-table
+  nzShowSizeChanger
+  [nzData]="files"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="totalElement"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="pageNum"
+  (nzQueryParams)="onQueryParamsChange($event)"
+>
+  <thead>
+  <tr>
+    <th>文件名</th>
+    <th>大小</th>
+    <th>文件描述</th>
+    <th>来自</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of files">
+    <td>{{data.fileName}}</td>
+    <td>{{data.fileSize}}</td>
+    <td>{{data.description}}</td>
+    <td>{{data.fromUsername}}</td>
+    <td>
+
+      <a nz-button nzType="link" (click)="onPreview(data.fileName)">预览</a>
+      <a nz-button nzType="link" (click)="onDownload(data.fileName)">下载</a>
+
+      <!--      只能删除自己上传的文件-->
+      <a *ngIf="commonService.getUsernameByJwt()===data.fromUsername"
+         nz-button nzType="link" nzDanger (click)="onDelete(data.fileName)">删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

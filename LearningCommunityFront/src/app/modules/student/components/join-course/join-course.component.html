@@ -1,0 +1,50 @@
+<div style="text-align: center; margin-top: 150px; margin-left: 30%; margin-right: 30%;">
+  <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <input type="text" [(ngModel)]='courseName' nz-input placeholder="请输入课程名称"/>
+  </nz-input-group>
+  <ng-template #suffixButton>
+    <button nz-button nzType="primary" nzSize="large" nzSearch (click)="getCourses()">搜索课程</button>
+  </ng-template>
+</div>
+
+<div nz-row>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+  <div nz-col [nzLg]="22" [nzXs]="22">
+    <nz-table
+      nzShowSizeChanger
+      [nzData]="courses"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageNum"
+      [nzTotal]="totalPage"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+      <tr>
+        <th>课程代码</th>
+        <th>课程名称</th>
+        <th>描述</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{course.courseCode}}</td>
+        <td>{{course.courseName}}</td>
+        <td>{{course.description}}</td>
+        <td>
+          <button nz-button nzType="link" (click)="joinCourse(course.courseCode)" *ngIf="!hasCourse(course.courseCode)">加入课程 </button>
+          <a nz-button nzType="link" disabled *ngIf="hasCourse(course.courseCode)">已有课程 </a>
+        </td>
+
+      </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+  <div nz-col [nzLg]="1" [nzXs]="1"></div>
+</div>
+
+
+

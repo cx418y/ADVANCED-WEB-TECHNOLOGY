@@ -1,0 +1,45 @@
+<div nz-row class="back">
+  <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div>
+    <nz-card nz-col [nzLg]="{span:10}" [nzXs]="{span:22}" style="padding:2% 9%">
+      <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="userLogin()">
+        <!-- <div style="padding-bottom: 10px"><i nz-icon nzType="login" nzTheme="outline" style="font-size: 80px"></i></div> -->
+        <h1 style="font-family: serif;text-align: center;">普通用户登录</h1>
+        <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="username" placeholder="Username" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="Password" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div style="margin-bottom: 8px;">
+        身份：
+     <nz-radio-group formControlName="radioValue">
+        <label nz-radio-button nzValue="Student"  >学生</label>
+        <label nz-radio-button nzValue="Teacher" >教师</label>
+        <label nz-radio-button nzValue="TA"   >助教</label>
+    </nz-radio-group>
+    </div>
+
+    <div  nz-row class="login-form-margin">
+
+      <div nz-col [nzSpan]="12" >
+        <a style="float: left;" class="login-form-forgot">忘记密码</a>
+      </div>
+      <div nz-col [nzSpan]="12" >
+        <a routerLink="../studentRegister" style="float: right;">立即注册</a>
+      </div>
+    </div>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"   >登 录</button>
+    <a routerLink="../adminLogin">管理员登录</a>
+  </form>
+</nz-card>
+<!-- <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div> -->
+</div>

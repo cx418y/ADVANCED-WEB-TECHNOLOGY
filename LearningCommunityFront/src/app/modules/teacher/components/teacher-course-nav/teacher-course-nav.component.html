@@ -1,0 +1,57 @@
+<app-course-header [courseCode]="courseCode"></app-course-header>
+
+<div class="card-container">
+  <nz-tabset nzCentered nzType="card">
+
+    <nz-tab nzTitle="成员列表" (nzClick)="teacherCourseMemberViewComponent?.reload()">
+      <app-teacher-course-member-view [courseCode]="courseCode"></app-teacher-course-member-view>
+    </nz-tab>
+
+    <nz-tab nzTitle="课程章节" (nzClick)="chapterComponent?.reload()">
+      <app-chapter [courseCode]="courseCode" [isStudent]="false"></app-chapter>
+    </nz-tab>
+
+    <nz-tab nzTitle="添加章节">
+      <app-add-chapter [courseCode]="courseCode"></app-add-chapter>
+      <app-add-section [courseCode]="courseCode"
+                       [chapterLastUpdated]="chapterLastUpdated"></app-add-section>
+    </nz-tab>
+
+    <nz-tab nzTitle="添加助教" (nzClick)="inviteTA()">
+    </nz-tab>
+
+    <nz-tab nzTitle="课程设置">
+      <app-course-config [courseCode]="courseCode"></app-course-config>
+    </nz-tab>
+
+    <nz-tab nzTitle="教师出题">
+      <app-add-problem [courseCode]="courseCode" [title]="'教师出题'" [isStudent]="false"></app-add-problem>
+    </nz-tab>
+
+    <nz-tab nzTitle="试题分发" (nzClick)="problemHandoutComponent?.reload()">
+      <app-problem-handout [courseCode]="courseCode"></app-problem-handout>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="problemsToBeTeacherGrade">
+      <ng-template #problemsToBeTeacherGrade>
+        试题评价
+        <nz-badge [nzDot]="teacherGradeProblemComponent?.hasProblemToBeGraded()">
+        </nz-badge>
+      </ng-template>
+
+      <app-teacher-grade-problem [courseCode]="courseCode"></app-teacher-grade-problem>
+    </nz-tab>
+
+    <nz-tab nzTitle="文件">
+      <app-course-file [allowFileUpload]="true" [courseCode]="courseCode"></app-course-file>
+    </nz-tab>
+
+
+  </nz-tabset>
+</div>
+
+
+
+
+
+

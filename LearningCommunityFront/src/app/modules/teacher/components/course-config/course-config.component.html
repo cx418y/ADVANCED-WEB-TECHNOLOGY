@@ -1,0 +1,18 @@
+<div nz-row>
+  <div nz-col [nzLg]="6" [nzXs]="2"></div>
+  <div nz-col [nzLg]="12" [nzXs]="20">
+
+    <nz-card nzTitle="课程设置">
+      <div nz-typography>
+        <span nz-typography>允许学生出题</span>
+        <nz-switch style="float: right"
+                   [(ngModel)]="courseConfigDTO.allowStudentAddProblem"></nz-switch>
+      </div>
+      <div nz-typography style="margin-top: 30px">
+        <button nz-button nzType="primary" style="float: right" (click)="setCourseConfig()">保存设置</button>
+      </div>
+    </nz-card>
+
+  </div>
+  <div nz-col [nzLg]="12" [nzXs]="2"></div>
+</div>

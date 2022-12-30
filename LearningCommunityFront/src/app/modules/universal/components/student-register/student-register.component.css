@@ -1,0 +1,40 @@
+
+.phone-select {
+  width: 70px;
+}
+
+.register-are {
+  margin-bottom: 8px;
+}
+
+:host {
+  text-align: center;
+}
+
+nz-header,
+nz-footer {
+  background: #ffffff;
+  color: black;
+}
+
+nz-footer {
+  line-height: 1.5;
+}
+
+
+nz-content {
+  background: #ffffff;
+  color: black;
+  min-height: 120px;
+  line-height: 120px;
+}
+
+nz-layout {
+  margin-bottom: 48px;
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+  margin: 0;
+}
+

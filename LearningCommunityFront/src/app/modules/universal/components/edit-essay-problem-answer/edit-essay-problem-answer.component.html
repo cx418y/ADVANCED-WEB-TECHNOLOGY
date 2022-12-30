@@ -1,0 +1,17 @@
+<div></div>
+<div><a (click)="showModal()">Edit</a></div>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="编辑答案"
+  [nzFooter]="null"
+  (nzOnCancel)="closeModal()"
+>
+  <ng-container *nzModalContent>
+    <editor
+      [(ngModel)]="value"
+      [init]="{ plugins: 'lists link image table code help wordcount' }"
+      [apiKey]="commonService.tinyMceKey()"
+    ></editor>
+    <div nz-typography style="float: right">Your answer of the essay problem will be automatically saved!</div>
+  </ng-container>
+</nz-modal>

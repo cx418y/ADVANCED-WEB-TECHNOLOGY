@@ -1,0 +1,32 @@
+<div nz-row>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+  <form nz-col [nzXs]="20" [nzLg]="12" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="body">
+    <h1>添加章</h1>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="chapterName">章名</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="chapterName" id="chapterName"
+               placeholder="章节的名字"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="chapterNum">章号</nz-form-label>
+      <nz-form-control nzErrorTip="章节号应为正整数">
+        <input nz-input formControlName="chapterNum" id="chapterNum"
+               placeholder="章节号，大于一的正整数"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control>
+        <button nz-button nzType="primary">添加章节</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+</div>
+
+
+
+

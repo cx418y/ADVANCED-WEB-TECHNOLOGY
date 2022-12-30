@@ -1,0 +1,48 @@
+<div></div>
+<div><a (click)="showModal()">添加作业</a></div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="添加作业"
+  (nzOnCancel)="closeModal()"
+  (nzOnOk)="submit()"
+>
+  <ng-container *nzModalContent>
+
+    <form nz-form [formGroup]="validateFrom">
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入作业标题">
+          <input type="text" nz-input formControlName="newHomeworkTitle" placeholder="作业标题"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入保存的旧版本数上限">
+          <nz-form-label>旧版本数上限</nz-form-label>
+          <nz-input-number formControlName="oldMax" [nzMin]="1" [nzMax]="100" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+
+        <nz-form-control nzErrorTip="请输入旧版本存活的时间">
+          <nz-form-label>旧版本存活时间(天)</nz-form-label>
+          <nz-input-number formControlName="oldTTL" [nzMin]="1" [nzMax]="100" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip='请输入作业详情'>
+          <editor
+            formControlName="newHomeworkDetails"
+            [init]="{ plugins: 'lists link image table code help wordcount', placeholder: '请输入作业详情'}"
+            [apiKey]="commonService.tinyMceKey()"
+          ></editor>
+        </nz-form-control>
+      </nz-form-item>
+
+
+    </form>
+  </ng-container>
+
+</nz-modal>
+
+

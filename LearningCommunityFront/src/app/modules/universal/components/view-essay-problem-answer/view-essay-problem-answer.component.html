@@ -1,0 +1,18 @@
+<div></div>
+<div><a (click)="showModal()">View Answer</a></div>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="查看答案"
+  [nzFooter]="null"
+  (nzOnCancel)="closeModal()"
+>
+  <ng-container *nzModalContent>
+    <editor
+      [(ngModel)]="value"
+      [init]="{ plugins: 'lists link image table code help wordcount' }"
+      [apiKey]="commonService.tinyMceKey()"
+      [disabled]="true"
+    ></editor>
+    <div nz-typography style="float: right"></div>
+  </ng-container>
+</nz-modal>

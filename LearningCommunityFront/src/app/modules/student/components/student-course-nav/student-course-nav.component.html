@@ -1,0 +1,40 @@
+<app-course-header [courseCode]="courseCode"></app-course-header>
+<div class="card-container">
+  <nz-tabset nzCentered nzType="card">
+    <nz-tab nzTitle="成员列表" (nzClick)="studentCourseMemberViewComponent?.reload()" >
+      <app-student-course-member-view [courseCode]="courseCode"></app-student-course-member-view>
+    </nz-tab>
+    <nz-tab nzTitle="课程章节">
+      <app-chapter [courseCode]="courseCode" [isStudent]="true"></app-chapter>
+    </nz-tab>
+    <nz-tab nzTitle="学生出题">
+      <app-add-problem [courseCode]="courseCode" [title]="'学生出题'" [isStudent]="true"></app-add-problem>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="problemsToBePeerGrade">
+      <ng-template #problemsToBePeerGrade>
+        学生互评
+        <nz-badge [nzDot]="gradeProblemsComponent?.hasProblemToBeGraded()">
+        </nz-badge>
+      </ng-template>
+      <app-grade-problem [courseCode]="courseCode"></app-grade-problem>
+    </nz-tab>
+
+
+
+    <nz-tab [nzTitle]="problemsToBeDone">
+      <ng-template #problemsToBeDone>
+        待做的题
+        <nz-badge [nzDot]="doProblemComponent?.hasProblemToBeDone()">
+        </nz-badge>
+      </ng-template>
+      <app-do-problem [courseCode]="courseCode"></app-do-problem>
+    </nz-tab>
+
+    <nz-tab nzTitle="我的答题得分">
+      <app-answer-record [courseCode]="courseCode"></app-answer-record>
+    </nz-tab>
+
+  </nz-tabset>
+</div>
+

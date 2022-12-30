@@ -1,0 +1,31 @@
+<app-course-header [courseCode]="courseCode"></app-course-header>
+
+
+<div class="card-container">
+  <nz-tabset nzCentered nzType="card">
+    <nz-tab nzTitle="成员列表" (nzClick)="taCourseMemberViewComponent?.reload()">
+      <app-ta-course-member-view [courseCode]="courseCode"></app-ta-course-member-view>
+    </nz-tab>
+    <nz-tab nzTitle="课程章节">
+      <app-chapter [courseCode]="courseCode" [isStudent]="false"></app-chapter>
+    </nz-tab>
+
+
+    <nz-tab [nzTitle]="problemsToBeTAGrade">
+      <ng-template #problemsToBeTAGrade>
+        试题评价
+        <nz-badge [nzDot]="taGradeProblemComponent?.hasProblemToBeGraded()">
+        </nz-badge>
+      </ng-template>
+
+      <app-ta-grade-problem [courseCode]="courseCode"></app-ta-grade-problem>
+    </nz-tab>
+
+    <nz-tab nzTitle="文件">
+      <app-course-file [allowFileUpload]="true" [courseCode]="courseCode"></app-course-file>
+    </nz-tab>
+
+
+  </nz-tabset>
+</div>
+

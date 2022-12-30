@@ -1,0 +1,44 @@
+<div nz-row>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+  <form nz-col [nzXs]="20" [nzLg]="12" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="body" >
+    <h1>添加小节</h1>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="ChapterName">选择章</nz-form-label>
+      <nz-form-control>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择章节" formControlName="chapterID">
+          <nz-option *ngFor="let item of chapters" nzLabel={{item.chapterName}} nzValue={{item.chapterID}}>
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="sectionName">小节名</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="sectionName" id="sectionName"
+               placeholder="小节的名字"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="sectionNum">小节号</nz-form-label>
+      <nz-form-control nzErrorTip="章节号应为正整数">
+        <input nz-input formControlName="sectionNum" id="sectionNum"
+               placeholder="小节号，大于等于一的正整数"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control>
+        <button nz-button nzType="primary">添加小节</button>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+  <div nz-col [nzXs]="2" [nzLg]="6"></div>
+</div>
+
+
+

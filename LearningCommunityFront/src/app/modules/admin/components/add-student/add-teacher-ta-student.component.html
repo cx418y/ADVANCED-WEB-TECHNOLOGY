@@ -1,0 +1,90 @@
+<div nz-row>
+  <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div>
+  <form nz-col [nzLg]="{span:10}" [nzXs]="{span:22}" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()"
+        style="padding-top: 20px;text-align: center">
+    <h1 style="text-align: center;font-family: serif">添加教师/助教/学生</h1>
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired style="text-align: left" nzFor="username">用户名</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="用户名必须由6～12位的字母和数字组成">
+        <input nz-input formControlName="username" id="username" placeholder="这是你用来登陆的凭证,6~10位字母和数字组成"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired style="text-align: left" nzFor="realname">真实姓名</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="真实姓名必须是2～4个汉字">
+        <input nz-input formControlName="realname" id="realname" placeholder="真实姓名，如：萧敬腾"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired nzFor="email" style="text-align: left">电子邮箱</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="输入的电子邮箱无效!">
+        <input nz-input formControlName="email" id="email" placeholder="电子邮箱"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="password" nzRequired style="text-align: left">密码</nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="请输入密码!">
+        <input
+          nz-input
+          type="password"
+          id="password"
+          formControlName="password"
+          (ngModelChange)="updateConfirmValidator()"
+          placeholder="不少于6位"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="checkPassword" nzRequired style="text-align: left">确认密码
+      </nz-form-label>
+      <nz-form-control [nzSm]="24" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input type="password" formControlName="checkPassword" id="checkPassword"
+               placeholder="必须和之前填写的密码一致"/>
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">请再次输入密码</ng-container>
+          <ng-container *ngIf="control.hasError('confirm')">
+            两次密码输入不一致
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!--    <nz-form-item>-->
+    <!--      <nz-form-label [nzSm]="24" [nzXs]="24" nzRequired nzFor="email" style="text-align: left">电子邮箱</nz-form-label>-->
+    <!--      <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="输入的电子邮箱无效!">-->
+    <!--        <input nz-input formControlName="email" id="email" placeholder="电子邮箱"/>-->
+    <!--      </nz-form-control>-->
+    <!--    </nz-form-item>-->
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="type" nzRequired style="text-align: left">身份
+      </nz-form-label>
+      <nz-form-control nzErrorTip="请选择身份">
+        <input formControlName="type" name="type" type="radio" value="Teacher" id="TeacherRadio">
+        <label for="TeacherRadio">教师（Teacher）</label>
+
+        <input formControlName="type" name="type" type="radio" value="TA" id="TARadio">
+        <label for="TARadio">助教（TA）</label>
+
+        <input formControlName="type" name="type" type="radio"
+               value="Student" id="StudentRadio">
+        <label for="StudentRadio">学生（Student）</label>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area" style="padding-top: 10px">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">添加教师/助教/学生</button>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+
+  <div nz-col [nzLg]="{span:7}" [nzXs]="{span:1}"></div>
+</div>
+
+
+

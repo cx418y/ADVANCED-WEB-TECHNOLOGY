@@ -1,0 +1,20 @@
+<div nz-row>
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="16">
+      <nz-list nzBordered style="background-color: white">
+
+        <nz-list-item *ngFor="let member of courseMembers">
+
+          {{member.username}} ({{member.realname}})
+
+          <span style="text-align: right">
+            {{member.email}}
+            <nz-tag [nzColor]="'blue'">{{member.role}}</nz-tag>
+          </span>
+
+        </nz-list-item>
+
+      </nz-list>
+    </div>
+    <div nz-col nzSpan="4"></div>
+  </div>

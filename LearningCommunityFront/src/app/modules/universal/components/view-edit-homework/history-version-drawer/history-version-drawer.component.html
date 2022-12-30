@@ -1,0 +1,24 @@
+<!--查看历史版本的界面，用drawer展示-->
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="History Versions"
+  (nzOnClose)="close()"
+>
+  <ng-container *nzDrawerContent>
+    <span nzType="secondary" nz-typography>教师设置了当前作业最多保留{{detailedHomework?.oldMax}}个历史版本</span>
+    <nz-list nzItemLayout="horizontal">
+      <nz-list-item *ngFor="let version of historyBriefVersions ">
+        <nz-list-item-meta
+          nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          [nzDescription]="historyVersionDescription(version)"
+        >
+        </nz-list-item-meta>
+        <button nz-button nzType="link" (click)="backtrackHistoryVersion(version.homeworkVersionID)">回溯</button>
+      </nz-list-item>
+      <nz-list-empty *ngIf="historyBriefVersions?.length === 0"></nz-list-empty>
+    </nz-list>
+
+  </ng-container>
+</nz-drawer>

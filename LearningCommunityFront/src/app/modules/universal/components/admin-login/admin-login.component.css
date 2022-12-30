@@ -1,0 +1,42 @@
+.login-form {
+    max-width: 300px;
+  }
+
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+  .back{
+    min-height:100%;
+     min-width: 100%;
+     padding-top: 8%;
+     padding-bottom: 8%;
+     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)
+  }
+
+  input{
+    border-radius: 5px;
+    height: 30px;
+  }
+
+  button{
+    border-radius: 5px;
+    height: 40px;
+    font-family: serif;
+    text-align: center;
+    font-size: larger;
+    
+  }
+
+  nz-radio-button{
+      width: 100px;
+      size: 100px;
+  }
+  
